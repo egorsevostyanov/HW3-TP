@@ -21,4 +21,10 @@ structure() {
 clear_data() {
     rm -f "$(pwd)/data"/*.csv "$(pwd)/data"/*.html
 }
+inside_generator() {
+    docker run -v "$(pwd)/data":/data --entrypoint sh datagen -c "ls -la /data"
+}
+inside_reporter() {
+    docker run -v "$(pwd)/data":/data --entrypoint sh datarep -c "ls -la /data"
+}
 "$@"
