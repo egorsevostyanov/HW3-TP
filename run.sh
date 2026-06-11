@@ -15,4 +15,10 @@ build_reporter() {
 run_reporter() {
     docker run -v "$(pwd)/data":/data datarep
 }
+structure() {
+    tree -a
+}
+clear_data() {
+    rm -f "$(pwd)/data"/*.csv "$(pwd)/data"/*.html
+}
 "$@"
