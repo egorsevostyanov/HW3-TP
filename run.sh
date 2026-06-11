@@ -9,4 +9,10 @@ run_generator() {
 create_local_data() {
     python3 generator/generate.py "$(pwd)/local_data"
 }
+build_reporter() {
+    docker build -t datarep ./reporter
+}
+run_reporter() {
+    docker run -v "$(pwd)/data":/data datarep
+}
 "$@"
